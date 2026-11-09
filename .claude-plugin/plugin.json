@@ -1,0 +1,7 @@
+{
+  "name": "gadget-migration",
+  "description": "Playbook skill for moving a Gadget (gadget.dev) Shopify app onto your own cloud: GCP, AWS, Azure or any container + Postgres host",
+  "version": "0.1.0",
+  "author": { "name": "40rty" },
+  "keywords": ["gadget", "shopify", "migration", "gcp", "aws", "azure", "cloud-run", "postgres"]
+}

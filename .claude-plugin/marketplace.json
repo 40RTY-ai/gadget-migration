@@ -1,0 +1,7 @@
+{
+  "name": "gadget-migration",
+  "owner": { "name": "40rty" },
+  "plugins": [
+    { "name": "gadget-migration", "source": "./", "description": "Move a Gadget Shopify app onto your own cloud", "version": "0.1.0" }
+  ]
+}
