@@ -1,4 +1,0 @@
-title: Migrating off Gadget
-description: Move a Gadget Shopify app onto GCP, AWS, Azure or any cloud
-theme: jekyll-theme-cayman
-exclude: [skills, .claude-plugin]
