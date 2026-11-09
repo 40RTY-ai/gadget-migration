@@ -2,8 +2,6 @@
 title: Migrating off Gadget
 ---
 
-# Migrating off Gadget
-
 A Claude Code skill that moves a [Gadget](https://gadget.dev) Shopify app onto your own cloud: **GCP, AWS, Azure**,
 or any host that runs containers and Postgres. We built it from a real production move: a Shopify app with about
 800 stores and 62 models went from Gadget to Google Cloud in October–November 2026. No store was lost and there was
