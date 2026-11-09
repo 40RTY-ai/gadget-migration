@@ -41,7 +41,14 @@ a { color: inherit; }
 .mark { width: 30px; height: 28px; display: block; }
 .top span { color: var(--ink-3); font-weight: 400; }
 .main { margin: auto 0; padding: 48px 0; }
-h1 { font: 600 clamp(40px, 4.2vw, 64px)/1.02 var(--sans); letter-spacing: -0.04em; color: var(--stone-900); margin: 0 0 28px; max-width: 12ch; }
+h1 { font: 600 clamp(28px, 2.6vw, 36px)/1.15 var(--sans); letter-spacing: -0.02em; color: var(--ink); margin: 0 0 28px; max-width: 22ch; }
+.intro { color: var(--ink-2); font-size: 16px; margin: -16px 0 28px; max-width: 46ch; }
+.install { position: relative; background: var(--bg-sunken); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font: 13px/1.7 var(--mono); color: var(--ink); max-width: 520px; margin-bottom: 14px; }
+.install code { display: block; white-space: pre; overflow-x: auto; padding-right: 56px; }
+.install button { position: absolute; top: 8px; right: 8px; font: 500 12px var(--sans); background: var(--bg-elevated); color: var(--ink-2); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.install button:hover { color: var(--ink); border-color: var(--ink-3); }
+.links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 14px; margin-bottom: 28px; }
+.links a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .points { list-style: none; padding: 0; margin: 0 0 32px; color: var(--ink-2); font-size: 16px; letter-spacing: -.012em; }
 .points li { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 8px; }
 .points svg { width: 16px; height: 16px; flex: none; margin-top: 3px; stroke: var(--ink-3); fill: none; stroke-width: 1.6; }
@@ -101,16 +108,19 @@ h1 em { font: italic 400 1.04em var(--human); letter-spacing: -0.02em; color: va
   <section class="hero">
     <a class="top" href="https://40rty.ai"><img class="mark" src="assets/40rty.png" alt="40RTY">off-gadget <span>· shared by 40RTY</span></a>
     <div class="main">
-      <span class="eyebrow"><i></i>Open Claude Code skill</span>
-      <h1>Move a Gadget app to <em>your own cloud.</em></h1>
+      <h1>Move a Gadget app to your own cloud.</h1>
+      <p class="intro">A Claude Code skill with the steps and traps from moving a Shopify app with 800 stores off Gadget.</p>
       <ul class="points">
         <li><svg viewBox="0 0 16 16"><path d="M5 4 1.5 8 5 12M11 4l3.5 4-3.5 4"/></svg>Keep your code; swap each Gadget package for a stand-in</li>
         <li><svg viewBox="0 0 16 16"><path d="M2 8a6 6 0 1 0 1.8-4.3M2 2v3.5h3.5"/></svg>Move one store at a time, with a way back</li>
-        <li><svg viewBox="0 0 16 16"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></svg>Notes and traps from a real move of 800 stores</li>
+        <li><svg viewBox="0 0 16 16"><path d="M4.5 12.5h7a3 3 0 0 0 .4-6 4 4 0 0 0-7.6-1A3.5 3.5 0 0 0 4.5 12.5z"/></svg>GCP, AWS, Azure or any container + Postgres host</li>
       </ul>
-      <div class="ctas">
-        <button class="btn primary" id="copy" type="button"><svg viewBox="0 0 16 16"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy install</button>
-        <a class="btn" href="https://github.com/40RTY-ai/gadget-migration">GitHub <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <div class="install"><button id="copy" type="button">Copy</button><code>/plugin marketplace add 40RTY-ai/gadget-migration
+/plugin install gadget-migration@gadget-migration</code></div>
+      <div class="links">
+        <a href="https://github.com/40RTY-ai/gadget-migration">GitHub</a>
+        <a href="https://github.com/40RTY-ai/gadget-migration/archive/refs/heads/main.zip">Download zip</a>
+        <a href="https://github.com/40RTY-ai/gadget-migration/blob/main/skills/migrating-off-gadget/traps.md">Add a trap</a>
       </div>
       <div class="route" aria-label="From Gadget to any of these clouds">
         <img class="g" src="assets/gadget.svg" alt="Gadget"><span class="ar">→</span>
