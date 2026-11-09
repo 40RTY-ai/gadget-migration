@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>migrate.md — Move your Gadget app to any cloud</title>
+<title>Gadget to any cloud — by 40RTY</title>
 <meta name="description" content="A Claude Code skill that moves a Gadget Shopify app onto GCP, AWS, Azure or any container + Postgres host.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +25,20 @@ body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); -we
 
 /* left */
 .hero { display: flex; flex-direction: column; padding: 36px 32px 32px 84px; overflow-y: auto; }
-.logo { display: flex; gap: 2px; text-decoration: none; }
-.logo span { font: 500 17px/1 var(--sans); padding: 6px 7px 7px; border-radius: 7px; letter-spacing: -.3px; }
-.logo .a { background: var(--brand); color: var(--brand-ink); }
-.logo .b { background: var(--pill-dark); color: var(--pill-dark-ink); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink-3); font: 500 15px var(--sans); }
+.logo img { height: 26px; display: block; }
+.logo .to { display: inline-flex; align-items: center; gap: 6px; background: var(--brand); color: var(--brand-ink); padding: 5px 10px 6px; border-radius: 999px; }
+.by { font: 500 13px var(--sans); color: var(--ink-2); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
+.by b { color: var(--ink); letter-spacing: .04em; }
+.clouds { margin-top: 36px; }
+.clouds p { font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 12px; }
+.clouds ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 20px 24px; align-items: center; }
+.clouds li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.clouds img { width: 22px; height: 22px; opacity: .55; filter: grayscale(1); transition: opacity .15s, filter .15s; }
+.clouds li:hover img { opacity: 1; filter: none; }
+.clouds li.lead img { opacity: 1; filter: none; }
+@media (prefers-color-scheme: dark) { .logo img, .clouds img { filter: invert(1) grayscale(1); } .clouds li:hover img, .clouds li.lead img { filter: invert(1); } }
 .main { margin: auto 0; padding: 48px 0; }
 h1 { font: 500 clamp(44px, 4.5vw, 68px)/1 var(--sans); letter-spacing: -.02em; margin: 0 0 32px; max-width: 11ch; }
 .points { list-style: none; padding: 0; margin: 0 0 36px; color: var(--ink-2); font-size: 16px; letter-spacing: -.012em; }
@@ -77,9 +87,12 @@ h1 { font: 500 clamp(44px, 4.5vw, 68px)/1 var(--sans); letter-spacing: -.02em; m
 <body>
 <div class="page">
   <section class="hero">
-    <a class="logo" href="./" aria-label="migrate.md"><span class="a">migrate</span><span class="b">md</span></a>
+    <div class="top">
+      <a class="logo" href="./" aria-label="Gadget to any cloud"><img src="assets/gadget.svg" alt="Gadget"><span class="to">→ any cloud</span></a>
+      <a class="by" href="https://40rty.ai">by <b>40RTY</b></a>
+    </div>
     <div class="main">
-      <h1>Move your Gadget app to any cloud.</h1>
+      <h1>Move off Gadget, onto your own cloud.</h1>
       <ul class="points">
         <li><svg viewBox="0 0 16 16"><path d="M5 4 1.5 8 5 12M11 4l3.5 4-3.5 4"/></svg>Your app's code stays as it is: each Gadget package gets a stand-in</li>
         <li><svg viewBox="0 0 16 16"><path d="M2 8a6 6 0 1 0 1.8-4.3M2 2v3.5h3.5"/></svg>Moves one store at a time and can undo a move in one click</li>
@@ -94,8 +107,20 @@ h1 { font: 500 clamp(44px, 4.5vw, 68px)/1 var(--sans); letter-spacing: -.02em; m
         <a href="https://github.com/40RTY-ai/gadget-migration/blob/main/skills/migrating-off-gadget/traps.md">40 production traps</a>
         <a href="https://github.com/40RTY-ai/gadget-migration/blob/main/skills/migrating-off-gadget/providers.md">Pick your cloud</a>
       </div>
+      <div class="clouds">
+        <p>Works with</p>
+        <ul>
+          <li class="lead"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/googlecloud.svg" alt="">Google Cloud</li>
+          <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/amazonaws.svg" alt="">AWS</li>
+          <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/microsoftazure.svg" alt="">Azure</li>
+          <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/railway.svg" alt="">Railway</li>
+          <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/render.svg" alt="">Render</li>
+          <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/digitalocean.svg" alt="">DigitalOcean</li>
+          <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/kubernetes.svg" alt="">Kubernetes</li>
+        </ul>
+      </div>
     </div>
-    <div class="foot">Learned from moving a live Shopify app with 800 stores to Google Cloud · <a href="LICENSE">MIT</a></div>
+    <div class="foot">Built by <a href="https://40rty.ai">40RTY</a> after moving a live Shopify app with 800 stores to Google Cloud · <a href="LICENSE">MIT</a><br>Not affiliated with Gadget or any cloud provider; logos belong to their owners.</div>
   </section>
   <article class="doc" id="doc" aria-label="SKILL.md"><p>Loading SKILL.md…</p></article>
 </div>
