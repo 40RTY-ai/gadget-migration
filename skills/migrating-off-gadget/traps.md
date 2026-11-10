@@ -11,7 +11,7 @@ Every row hit production during a real Gadget → GCP move. Provider-specific na
 | Pages take 10 s+ | engine ran `SELECT *` despite `select`; no index on reference columns | project only selected columns; index every `*_id` column at schema creation |
 | "Newest first" shows 9 above 78 | ids stored as text sort lexically | order by `(length(id), id)` + matching index; new ids longer than Gadget's so they sort newest |
 | FK violation (`23503`) on copy | tables copied alphabetically, children before parents | copy in FK order; reconciler deletes children of parents Gadget deleted |
-| DB at 99% CPU, 504s for every merchant | a reader capped at N rows reconciled the **partial** result and re-created the rest every run (2M duplicate rows) | throw past the cap, never act on a partial read; purge duplicates in batches |
+| DB pegged, timeouts for every merchant | a reader capped at N rows reconciled the **partial** result and re-created the rest every run (mass duplicate rows) | throw past the cap, never act on a partial read; purge duplicates in batches |
 | System writes refused ("not allowed to update…") | internal writes went through the public action's permission path | use `api.internal` for system writes |
 | Reads that "work on Gadget" throw | read names no shop; Gadget resolved it implicitly | require explicit `shopId`; bind connections to the caller's shop |
 | Full-text `search:` differs | Gadget's search index is its own; internal-API search returned [] on Gadget prod | Postgres `tsvector`/trigram; test against real queries |
@@ -21,10 +21,10 @@ Every row hit production during a real Gadget → GCP move. Provider-specific na
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Merchant-facing job never dispatches | long fleet-wide jobs (13 min each × 400 stores) took every slot of the high queue | separate low-priority lane for fleet jobs; per-store lanes as their own queues |
-| 25k-task backlog | fan-out timed out, retried, enqueued all N again (no dedupe id) | one job per page of 250, dedupe ids, coalesce repeats per item in a 30 s window |
+| Merchant-facing job never dispatches | long fleet-wide jobs took every slot of the high queue | separate low-priority lane for fleet jobs; per-store lanes as their own queues |
+| Huge task backlog | fan-out timed out, retried, enqueued all N again (no dedupe id) | one job per page of 250, dedupe ids, coalesce repeats per item in a 30 s window |
 | Job killed mid-run | runtime request timeout < queue dispatch deadline [Cloud Run vs Cloud Tasks 1800 s] | set equal; test it in CI |
-| ~7% dispatches bounced | push queue can't see lane limits; runner answers 429 | accept it, or use a Postgres queue that claims around full lanes |
+| Some dispatches bounced | push queue can't see lane limits; runner answers 429 | accept it, or use a Postgres queue that claims around full lanes |
 | A job never runs in prod | dev and prod share one Redis; dev took prod's locks | prefix every cache/lock key with the service/env name |
 | OOM on a big store's sync | buffered a whole bulk JSONL in memory | stream it; raise memory; cap per pass and continue in a follow-up job |
 | Logs from background passes missing | some in-process logs never reach the log sink | prove a job ran by reading rows, not by absence of a log |

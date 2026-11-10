@@ -7,8 +7,7 @@ description: Use when moving a Gadget (gadget.dev) app, usually a Shopify app, o
 
 ## Overview
 
-Proven on a production Shopify app (~800 installed stores, 62 models, 440 routes/actions) moved from Gadget to GCP in
-about four weeks with zero lost stores. **Core principle: change where the code runs, never what it does.** Keep the
+Proven on a production Shopify app moved from Gadget to GCP with zero lost stores. **Core principle: change where the code runs, never what it does.** Keep the
 app's source unchanged, give it a stand-in for every Gadget package, and move **one store at a time** with a one-click
 way back. Cloud products are slots: pick yours in `providers.md`.
 
@@ -30,8 +29,7 @@ every write path for months. Per-store moves need one bridge and one copy routin
 | 7 | **Waves.** A move queue: small/free/restricted stores first, paying and big catalogs later, VIPs by hand. Concurrency ~6; pause on >3 failures or >10%. Stores Shopify refuses (401/402/403/404) stay `skipped`, rechecked later. | each wave 0 failures or explained |
 | 8 | **Decommission.** Remove the proxy, kill-switch the bridge (`GADGET_OFF` answers locally), delete `*.gadget.app` webhook subscriptions, convert any non-expiring tokens. Leave the Gadget env idle ~1 week as a cold backup, check big stores' row counts, then delete it. | 0 outbound Gadget calls for a full day |
 
-Timeline for reference: design to decommission took ~4 weeks of build (phases 0–5 in ~1 week on one branch), ~1 week of
-waves, ~2 weeks of tail. Keep this design doc up front; write each phase's detailed plan only when that phase starts.
+Keep this design doc up front; write each phase's detailed plan only when that phase starts.
 
 ## Parity checks to build (they caught most bugs)
 
