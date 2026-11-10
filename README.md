@@ -3,8 +3,7 @@
 Site: https://40rty-ai.github.io/gadget-migration/
 
 A Claude Code skill for moving a [Gadget](https://gadget.dev) app (usually a Shopify app) onto your own cloud:
-GCP, AWS, Azure, or any container + Postgres host. Distilled from a production migration of a Shopify app
-(~800 stores) from Gadget to Google Cloud, Oct–Nov 2026.
+GCP, AWS, Azure, or any container + Postgres host. Distilled from a production migration of a Shopify app from Gadget to Google Cloud.
 
 ## Install
 
